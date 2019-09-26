@@ -56,18 +56,3 @@ sorted(tel)
 dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 #When the key is simple strin, you can use simple keyword construct
 dict(sape=4139, guido=4127, jack=4098)
-
-Activity
-
-    Chang Chang deleted version 1
-
-Chang Chang deleted version 2
-Chang Chang uploaded versions 3 - 13
-Comment(optional)
-Write a comment
-
-@mention users to notify them.
-Drop files on this page to upload them into this folder.
-0 items
-Size: 1.8 KB
-
