@@ -56,3 +56,69 @@ sorted(tel)
 dict([('sape', 4139), ('guido', 4127), ('jack', 4098)])
 #When the key is simple strin, you can use simple keyword construct
 dict(sape=4139, guido=4127, jack=4098)
+
+'''
+dict.items()
+'''
+knights = {'gallahad': 'the pure', 'robin': 'the brave'}
+for k, v in knights.items():
+    print(k, v)
+
+'''
+enumerate()
+'''
+for i, v in enumerate(['tic', 'tac', 'toe']):
+    print(i, v)
+
+'''
+zip(), and str.format()
+'''
+ques = ['name', 'age', 'hobby']
+ans = ['john', '32', 'jogging']
+for q, a in zip(ques, ans):
+    print('What''s you {0}? It is {1}'.format(q, a))
+
+'''
+reversed()
+'''
+for i in reversed(range(1, 10, 2)):
+    print(i)
+    
+    
+'''
+sorted() : returns a new sorted list while leaving the source unaltered.
+'''
+basket = ['apple', 'orange', 'apple', 'pear', 'orange', 'banana']
+for f in sorted(basket):
+    print(f)
+print('----------')
+for f in set(sorted(basket)):
+    print(f)
+print('----------')
+for f in sorted(set(basket)):
+    print(f)
+
+'''
+It is sometimes tempting to change a list while you are looping over it; 
+however, it is often simpler and safer to create a new list instead.
+'''
+import math
+raw_data = [56.3, float('nan'), 34.5, 43.66, 76.9, float('NaN'), 34.3]
+filtered_data = []
+for v in raw_data:
+    if not math.isnan(v):
+        filtered_data.append(v)
+print(filtered_data)
+
+
+'''
+The Boolean operators and and or are so-called short-circuit operators: 
+their arguments are evaluated from left to right, and evaluation stops as soon 
+as the outcome is determined. For example, if A and C are true but B is false, 
+A and B and C does not evaluate the expression C. When used as a general value 
+and not as a Boolean, the return value of a short-circuit operator is the last 
+evaluated argument.
+'''
+string1, string2, string3 = '', 'Trondheim', 'Hammer Dance'
+non_null_return = string1 or string2 or string3
+print(non_null_return)
