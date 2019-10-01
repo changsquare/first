@@ -101,7 +101,8 @@ with open('workfile') as f:
 # 2) without using with statement 
 file = open('workfile', 'w') 
 try: 
-    file.write('hello world') 
+    file.write('hello world\n')
+    file.write('star war!\n')
 finally: 
     file.close() 
 # Still need to type out file.close
@@ -128,11 +129,12 @@ newline.
 '''
 For reading lines from a file, you can loop over the file object. 
 This is memory efficient, fast, and leads to simple code:
+'''
+with open('workfile','r') as f:
+    for line in f:
+        print(line, end='')
 
-for line in f:
-...     print(line, end='')
-
-
+'''
 If you want to read all the lines of a file in a list you can also use list(f) 
 or f.readlines().
 '''
@@ -147,3 +149,59 @@ value = ('the answer', 24)
 s = str(value)
 with open('workfile','a') as f:
     aa1 = f.write('\n' + s)
+
+
+'''
+f.tell() returns an integer giving the file object’s current position in the 
+file represented as number of bytes from the beginning of the file when in 
+binary mode and an opaque number when in text mode.
+
+To change the file object’s position, use f.seek(offset, whence). The position 
+is computed from adding offset to a reference point; the reference point is 
+selected by the whence argument. A whence value of 0 measures from the 
+beginning of the file, 1 uses the current file position, and 2 uses the end of 
+the file as the reference point. whence can be omitted and defaults to 0, 
+using the beginning of the file as the reference point.
+
+f.read(size). size is # of characters in string and bytes for binary files. If
+ignored, it reads to the EOF. 
+'''
+with open('workfile2', 'br+') as f2:
+    f2.write(b'0123456789abcdef')
+    print('At the end, since we just finished writing: {0}'.format(f2.tell()))
+    print('Go to the 0-th/beginning location: {0}'.format(f2.seek(0))) # Return to the beginning. 
+    print('Go to the 4-th location from beginning: {0}'.format(f2.seek(4,0))) 
+    print('Confirm it is at 4: {0}'.format(f2.tell()))
+    print('Read 2 items: {0}'.format(f2.read(2)))
+    print('Now we are at 6-th location: {0}'.format(f2.tell()))
+    print('Advance 2 locations from current locateion to 8: {0}'.format(f2.seek(2,1)))
+    print('Conform we are at 8: {0}'.format(f2.tell()))
+    print('Advance 3 locations from current locateion to b: {0}'.format(f2.seek(3,1)))
+    print('Conform we are at 11: {0}'.format(f2.tell()))
+    print('Confirm again by reading the 11-th item: {}'.format(f2.read(1)))
+    print('Goto -3-th location from the end: {0}'.format(f2.seek(-3,2)))
+    print('Conform by reading it: {}'.format(f2.read(1)))
+    
+'''
+JSON: to convert between string and numbers
+
+serilaizing: take Python data hierarchies, and convert them to string representations;
+deserializing: Reconstructing the data from the string representation
+
+import json
+converted_string = json.dumps([list_of_Python_data])
+
+# Converts data into a text file
+json.dump([list_of_python_data], file_name)
+
+# To decode the object again,
+list_of_python_data = json.load(file_object)
+'''
+import json
+x3 = [12,34,'yacht']
+with open('workfile3','r+') as f3:
+    #json.dump(x3, f3)
+    xx3 = json.load(f3)
+
+
+
