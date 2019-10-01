@@ -1,0 +1,4 @@
+1. Check if pull is needed:
+
+1.1 git remote update or git remote -v update
+1.2 git status -uno or (git show-branch *master)
