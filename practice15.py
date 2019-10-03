@@ -126,3 +126,38 @@ def h1():
 h1()
 print("Final:           ", z)
 print('Z address/reference: {}'.format(id(z)))
+
+print('***********************************************')
+
+'''
+In the following example, you can also see that there was no previous binding 
+for spam before the global assignment, which inside a nested function, i.e.
+the module-level naming/binding of spam is done inside a nested function, without
+prior naming/binding of spam at the module-level!
+
+Also, global ONLY binds at the module-level! It does NOT affect the level/scope
+of the enclosing function! 
+'''
+def scope_test():
+    def do_local():
+        spam = "local spam"
+
+    def do_nonlocal():
+        nonlocal spam
+        spam = "nonlocal spam"
+
+    def do_global():
+        global spam
+        spam = "global spam"
+
+    spam = "test spam"
+    do_local()
+    print("After local assignment:", spam)
+    do_nonlocal()
+    print("After nonlocal assignment:", spam)
+    do_global()
+    print("After global assignment:", spam)
+
+scope_test()
+print("In global scope:", spam)
+
