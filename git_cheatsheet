@@ -2,3 +2,9 @@
 
 1.1 git remote update or git remote -v update
 1.2 git status -uno or (git show-branch *master)
+
+2. Some tutorials:
+https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
+https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/
+https://www.afternerd.com/blog/learn-git/#forget-github
+
