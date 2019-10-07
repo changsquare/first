@@ -140,8 +140,53 @@ print(next(zz))
 print('---------------------------------------')
 for char in zz:
     print(char)
-  
-        
+    
+print('========================================')
+'''
+9.9: using "yield" instead of "return"
+Generators are a simple and powerful tool for creating iterators. They are 
+written like regular functions but use the yield statement whenever they want 
+to return data. Each time next() is called on it, the generator resumes where 
+it left off (it remembers all the data values and which statement was last 
+executed). An example:
+'''
+def reverse(data):
+    for index in range(len(data)-1, -1, -1):
+        yield data[index]
+
+for item in reverse('pqrst'):
+    print(item)
+
+
+print('****************************************')
+'''
+Some simple generators can be coded succinctly as expressions using a syntax 
+similar to list comprehensions but with parentheses instead of square brackets. 
+These expressions are designed for situations where the generator is used right 
+away by an enclosing function. Generator expressions are more compact but less 
+versatile than full generator definitions and tend to be more memory friendly 
+than equivalent list comprehensions.
+'''
+# Ex1:
+a = sum(i*i for i in range(10))
+print(a)
+
+# Ex2:
+xvec = [1, 2, 3]
+yvec = [4, 5, 6]
+a = sum(x*y for x, y in zip(xvec, yvec))
+print(a)
+
+#Ex3:
+data = 'golf'
+a = list(data[idx] for idx in range(len(data)-1, -1, -1))
+print(a)
+
+#Ex4
+#unique_words = set(word  for line in page  for word in line.split())
+
+#Ex5
+#valedictorian = max((student.gpa, student.name) for student in graduates)
         
         
         
